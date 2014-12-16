@@ -130,6 +130,7 @@ class BaseRubyTask(sublime_plugin.TextCommand):
     global BEFORE_CALLBACK; BEFORE_CALLBACK = s.get("before_callback")
     global AFTER_CALLBACK; AFTER_CALLBACK = s.get("after_callback")
     global COMMAND_PREFIX; COMMAND_PREFIX = False
+    global COMMAND_ENV; COMMAND_ENV = s.get("rspec_command_env")
     global SAVE_ON_RUN; SAVE_ON_RUN = s.get("save_on_run")
     global SYNTAX; SYNTAX = s.get('syntax')
     global THEME; THEME = s.get('theme')
@@ -161,7 +162,7 @@ class BaseRubyTask(sublime_plugin.TextCommand):
     if rbenv and self.is_executable(rbenv_cmd):
       COMMAND_PREFIX = rbenv_cmd + ' exec'
     elif rvm and self.is_executable(rvm_cmd):
-      COMMAND_PREFIX = rvm_cmd + ' -S'
+      COMMAND_PREFIX = COMMAND_ENV + ' ' + rvm_cmd + ' -S'
 
   def bundler_support(self):
     project_root = self.file_type(None, False).find_project_root()
