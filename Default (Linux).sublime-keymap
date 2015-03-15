@@ -23,7 +23,7 @@
                } ]
   }, // verify ruby syntax
 
-  { "keys": ["ctrl+period"],
+  { "keys": ["super+period"],
       "command": "switch_between_code_and_test",
       "args": {"split_view": false},
       "context": [ { "key": "selector", "operator": "equal",
@@ -31,7 +31,7 @@
                } ]
   }, // switch between code and test in single mode
 
-  { "keys": ["ctrl+shift+period"],
+  { "keys": ["super+shift+period"],
       "command": "switch_between_code_and_test",
       "args": {"split_view": true},
       "context": [ { "key": "selector", "operator": "equal",
