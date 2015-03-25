@@ -136,7 +136,6 @@ class BaseRubyTask(sublime_plugin.TextCommand):
     global THEME; THEME = s.get('theme')
     global TERMINAL_ENCODING; TERMINAL_ENCODING = s.get('terminal_encoding')
 
-
     rbenv   = s.get("check_for_rbenv")
     rvm     = s.get("check_for_rvm")
     bundler = s.get("check_for_bundler")
@@ -153,7 +152,7 @@ class BaseRubyTask(sublime_plugin.TextCommand):
     if spring: self.spring_support()
 
   def gemfile_path(self):
-    project_root = self.file_type(None, False).find_project_root()
+    project_root = self.window().project_data()['folders'][0]['path']
     if not os.path.isdir(project_root):
       s = sublime.load_settings("RubyTest.last-run")
       project_root = s.get("last_test_working_dir")
